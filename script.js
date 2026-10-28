@@ -1,6 +1,6 @@
 function buscarUsuarios() {
  
-    fetch("http://127.0.0.1:8000/usuarios")
+    fetch("https://supabase-s6vb.onrender.com/usuarios")
  
         .then(response => response.json())
  
@@ -48,7 +48,7 @@ function cadastrarUsuario() {
     }
  
  
-    fetch("http://127.0.0.1:8000/usuarios", {
+    fetch("https://supabase-s6vb.onrender.com/usuarios", {
  
         method: "POST",
  
@@ -99,7 +99,7 @@ function atualizarUsuario() {
  
  
     fetch(
-        "http://127.0.0.1:8000/usuarios/" + id,
+        "https://supabase-s6vb.onrender.com/usuarios/" + id,
         {
  
             method: "PUT",
@@ -165,7 +165,7 @@ function excluirUsuario() {
  
  
     fetch(
-        "http://127.0.0.1:8000/usuarios/" + id,
+        "https://supabase-s6vb.onrender.com/usuarios/" + id,
         {
  
             method: "DELETE"
