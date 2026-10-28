@@ -11,7 +11,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://supabase-s6vb.onrender.com"],
+    allow_origins=["https://supabase-s6vb.onrender.com",
+                   "https://athenatest-pied.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
