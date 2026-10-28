@@ -48,35 +48,41 @@ function cadastrarUsuario() {
     }
  
  
+    
     fetch("https://supabase-s6vb.onrender.com/usuarios", {
- 
         method: "POST",
- 
         headers: {
             "Content-Type": "application/json"
         },
- 
-        body: JSON.stringify({
-            nome: nome
-        })
- 
+        body: JSON.stringify({ nome: nome })
     })
- 
-    .then(response => response.json())
- 
+    .then(async response => {
+        const dados = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                dados.detail || "Erro ao cadastrar usuário."
+            );
+        }
+
+        return dados;
+    })
     .then(usuario => {
- 
         mensagem.innerText =
-            "Usuário " +
-            usuario.nome +
+            "Usuário " + usuario.nome +
             " cadastrado com sucesso!";
- 
+
         document.getElementById("nome").value = "";
- 
+
         buscarUsuarios();
- 
+    })
+    .catch(erro => {
+        mensagem.innerText =
+            "Não foi possível cadastrar: " + erro.message;
+
+        console.error("Erro na API:", erro);
     });
- 
+
 }
  
  
